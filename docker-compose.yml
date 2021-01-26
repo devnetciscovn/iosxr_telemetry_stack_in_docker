@@ -1,0 +1,36 @@
+version: "2"
+
+services:
+  influxdb:
+    #build: influxdb
+    #env_file: configuration.env
+    image: influxdb:1.8.3
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb:/var/lib/influxdb
+
+  grafana:
+    #build: grafana
+    #env_file: configuration.env
+    image: xr_grafana
+    depends_on:
+      - "influxdb"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+
+  telegraf:
+    #build: telegraf
+    #env_file: configuration.env
+    image: telegraf:1.16.3
+    depends_on:
+      - "influxdb"
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro 
+      - ./telegraf/snmp/snmp.conf:/etc/snmp/snmp.conf 
+      - ./telegraf/snmp/mibs:/usr/share/mibs
+  
+volumes:
+  influxdb:

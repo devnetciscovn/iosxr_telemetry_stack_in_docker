@@ -1,0 +1,26 @@
+FROM grafana/grafana:7.3.6-ubuntu
+
+RUN grafana-cli plugins install grafana-piechart-panel
+RUN grafana-cli plugins install jdbranham-diagram-panel
+
+#/etc/grafana/grafana.ini
+WORKDIR /etc/grafana/
+COPY    grafana/grafana.ini ./
+
+
+#cp ~/IOSXR-Telemetry-Collection-Stack/Grafana/Databases/* /etc/grafana/provisioning/datasources/
+#cp ~/IOSXR-Telemetry-Collection-Stack/Grafana/Dashboards_Description/* /etc/grafana/provisioning/dashboards/
+#WORKDIR /etc/grafana/provisioning/
+#COPY    grafana/datasources/* ./datasources/
+#COPY    grafana/dashboard_descriptions/* ./dashboards/
+
+
+#mkdir /var/lib/grafana/dashboards/
+#cp -r ~/IOSXR-Telemetry-Collection-Stack/Grafana/Dashboards/* /var/lib/grafana/dashboards/
+#RUN     mkdir -p /var/lib/grafana/dashboards
+#WORKDIR /var/lib/grafana/dashboards/
+#COPY    grafana/dashboards/* ./ 
+
+
+USER grafana
+ENTRYPOINT [ "/run.sh" ]
