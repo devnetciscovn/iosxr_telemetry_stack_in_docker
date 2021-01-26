@@ -11,8 +11,15 @@ Download the iosxr_telemetry_stack_in_docker git repo using git clone command
 
 ```
 git clone https://wwwin-github.cisco.com/sargandh/iosxr_telemetry_stack_in_docker.git
+
 ```
 
+All the docker commands should be used under iosxr_telemetry_stack_in_docker. 
+
+So after git clone command, change working directory to cd iosxr_telemetry_stack_in_docker
+```
+cd iosxr_telemetry_stack_in_docker
+```
 1. Create influxDB database with 30 days retention policy
 
 ```
