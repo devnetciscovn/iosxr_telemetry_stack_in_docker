@@ -1,6 +1,18 @@
 # iosxr_telemetry_stack_in_docker
 IOSXR Telemetry Application Stack in Docker
 
+## Installation and running IOS-XR Docker Telemery Stack
+
+* Prerequisites
+    * Docker (20.10.2 or above)
+    * Docker-compose (1.8.0 or above)
+
+Download the iosxr_telemetry_stack_in_docker git repo using git clone command
+
+```
+git clone https://wwwin-github.cisco.com/sargandh/iosxr_telemetry_stack_in_docker.git
+```
+
 1. Create influxDB database with 30 days retention policy
 
 ```
@@ -36,3 +48,13 @@ NOTE: The existing influxdb time series data will be lost.
 ```
 sudo docker-compose down -v
 ```
+
+## Access IOS-XR Docker Telemery Stack
+
+Access the grafana UI using the docker host_ip:3000 port number
+
+```
+http://<IP>:3000/login
+```
+Sample SNMP Metrics
+![Alt text](/images/IOSXR_Device_Metrics_SNMP.png?raw=true "SNMP metrics collected by telegraf")
