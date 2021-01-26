@@ -11,7 +11,6 @@ Download the iosxr_telemetry_stack_in_docker git repo using git clone command
 
 ```
 git clone https://wwwin-github.cisco.com/sargandh/iosxr_telemetry_stack_in_docker.git
-
 ```
 
 All the docker commands should be used under iosxr_telemetry_stack_in_docker. 
