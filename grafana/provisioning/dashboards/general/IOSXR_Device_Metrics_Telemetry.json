@@ -120,7 +120,7 @@
           "measurement": "Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"total-cpu-one-minute\") FROM \"Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT max(\"total-cpu-one-minute\") FROM \"Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -140,9 +140,9 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=",
-              "value": "NCS5508-Core1-DUT"
+              "value": "/^$Node$/"
             }
           ]
         }
@@ -246,7 +246,7 @@
           "measurement": "Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT (last(\"system-ram-memory\") - last(\"free-application-memory\")) * 100 / last(\"system-ram-memory\") FROM \"Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary\" WHERE \"Producer\" =~ /^$Node$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT (last(\"system-ram-memory\") - last(\"free-application-memory\")) * 100 / last(\"system-ram-memory\") FROM \"Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary\" WHERE \"source\" =~ /^$Node$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -266,7 +266,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -292,7 +292,7 @@
           "measurement": "Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT (last(\"system-ram-memory\") - last(\"free-application-memory\")) * 100 / last(\"system-ram-memory\") FROM \"Cisco-IOS-XR-nto-misc-shmem-oper:memory-summary/nodes/node/summary\" WHERE \"Producer\" =~ /^$Node$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT (last(\"system-ram-memory\") - last(\"free-application-memory\")) * 100 / last(\"system-ram-memory\") FROM \"Cisco-IOS-XR-nto-misc-shmem-oper:memory-summary/nodes/node/summary\" WHERE \"source\" =~ /^$Node$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -312,7 +312,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -405,7 +405,7 @@
           "measurement": "Cisco-IOS-XR-shellutil-oper:system-time/uptime",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"uptime\" FROM \"Cisco-IOS-XR-shellutil-oper:system-time/uptime\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter",
+          "query": "SELECT \"uptime\" FROM \"Cisco-IOS-XR-shellutil-oper:system-time/uptime\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -421,7 +421,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -523,7 +523,7 @@
           "measurement": "Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-summary",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"interface-counts__interface-count\") FROM \"Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-summary\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "query": "SELECT last(\"interface-counts__interface-count\") FROM \"Cisco-IOS-XR-pfi-im-cmd-oper:interfaces/interface-summary\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -543,7 +543,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -587,7 +587,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -631,7 +631,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -675,7 +675,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -752,7 +752,7 @@
           "measurement": "Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT non_negative_derivative(\"bytes-received\", 1s) *8 FROM \"Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter GROUP BY \"interface-name\"",
+          "query": "SELECT non_negative_derivative(\"bytes-received\", 1s) *8 FROM \"Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter GROUP BY \"interface-name\"",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -780,7 +780,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -825,7 +825,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -973,7 +973,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1017,7 +1017,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1061,7 +1061,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1105,7 +1105,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1149,7 +1149,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1193,7 +1193,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1291,7 +1291,7 @@
           "measurement": "Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT distinct(\"lane-data__receive-power\")  / 100 FROM \"Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter GROUP BY time($__interval), \"name\", \"lane-data__lane-index\"",
+          "query": "SELECT distinct(\"lane-data__receive-power\")  / 100 FROM \"Cisco-IOS-XR-controller-optics-oper:optics-oper/optics-ports/optics-port/optics-info\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter GROUP BY time($__interval), \"name\", \"lane-data__lane-index\"",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1317,7 +1317,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1373,7 +1373,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1511,7 +1511,7 @@
           ],
           "tags": [
             {
-              "key": "Producer",
+              "key": "source",
               "operator": "=~",
               "value": "/^$Node$/"
             }
@@ -1611,7 +1611,7 @@
               "measurement": "Cisco-IOS-XR-ip-rib-ipv4-oper:rib/vrfs/vrf/afs/af/safs/saf/ip-rib-route-table-names/ip-rib-route-table-name/protocol/isis/as/information",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"active-routes-count\" FROM \"Cisco-IOS-XR-ip-rib-ipv4-oper:rib/vrfs/vrf/afs/af/safs/saf/ip-rib-route-table-names/ip-rib-route-table-name/protocol/isis/as/information\" WHERE (\"Producer\" =~ /^$Node$/ AND \"af-name\" = 'IPv4' AND \"saf-name\" = 'Unicast') AND $timeFilter",
+              "query": "SELECT \"active-routes-count\" FROM \"Cisco-IOS-XR-ip-rib-ipv4-oper:rib/vrfs/vrf/afs/af/safs/saf/ip-rib-route-table-names/ip-rib-route-table-name/protocol/isis/as/information\" WHERE (\"source\" =~ /^$Node$/ AND \"af-name\" = 'IPv4' AND \"saf-name\" = 'Unicast') AND $timeFilter",
               "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
@@ -1627,7 +1627,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -1666,7 +1666,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -1705,7 +1705,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -1738,7 +1738,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -1868,7 +1868,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -1928,7 +1928,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -1988,7 +1988,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -2042,7 +2042,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -2145,7 +2145,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2228,7 +2228,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2275,7 +2275,7 @@
               "measurement": "Cisco-IOS-XR-clns-isis-oper:isis/instances/instance/statistics-global",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"statistics__iih-dropped-count\" FROM \"Cisco-IOS-XR-clns-isis-oper:isis/instances/instance/statistics-global\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter",
+              "query": "SELECT \"statistics__iih-dropped-count\" FROM \"Cisco-IOS-XR-clns-isis-oper:isis/instances/instance/statistics-global\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2291,7 +2291,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2317,7 +2317,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2343,7 +2343,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2417,7 +2417,7 @@
               "measurement": "Cisco-IOS-XR-ipv4-bgp-oper:bgp/instances/instance/instance-active/default-vrf/process-info",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"vrf__path-count\" FROM \"Cisco-IOS-XR-ipv4-bgp-oper:bgp/instances/instance/instance-active/default-vrf/process-info\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter",
+              "query": "SELECT \"vrf__path-count\" FROM \"Cisco-IOS-XR-ipv4-bgp-oper:bgp/instances/instance/instance-active/default-vrf/process-info\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter",
               "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
@@ -2433,7 +2433,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2556,7 +2556,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2658,7 +2658,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2782,7 +2782,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -2886,7 +2886,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3010,7 +3010,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3116,7 +3116,7 @@
               "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"auto-bandwidth-tunnels\" FROM \"Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter",
+              "query": "SELECT \"auto-bandwidth-tunnels\" FROM \"Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter",
               "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
@@ -3132,7 +3132,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3159,7 +3159,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3186,7 +3186,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3213,7 +3213,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3240,7 +3240,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3267,7 +3267,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3294,7 +3294,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3321,7 +3321,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3348,7 +3348,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3375,7 +3375,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3402,7 +3402,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3519,7 +3519,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3561,7 +3561,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3603,7 +3603,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3645,7 +3645,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3687,7 +3687,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3729,7 +3729,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3771,7 +3771,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3813,7 +3813,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3855,7 +3855,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3897,7 +3897,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -3939,7 +3939,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4034,7 +4034,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bandwidth-information__pre-standard-dste-interface__allocated-bit-rate\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bandwidth-information__pre-standard-dste-interface__allocated-bit-rate\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
@@ -4050,7 +4050,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4161,7 +4161,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4181,7 +4181,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "B",
               "resultFormat": "time_series",
@@ -4197,7 +4197,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4217,7 +4217,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "C",
               "resultFormat": "time_series",
@@ -4233,7 +4233,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4253,7 +4253,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "D",
               "resultFormat": "time_series",
@@ -4269,7 +4269,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4289,7 +4289,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "E",
               "resultFormat": "time_series",
@@ -4305,7 +4305,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4325,7 +4325,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "F",
               "resultFormat": "time_series",
@@ -4341,7 +4341,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4361,7 +4361,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "G",
               "resultFormat": "time_series",
@@ -4377,7 +4377,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4397,7 +4397,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "H",
               "resultFormat": "time_series",
@@ -4413,7 +4413,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4433,7 +4433,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "I",
               "resultFormat": "time_series",
@@ -4449,7 +4449,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4483,7 +4483,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4503,7 +4503,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "K",
               "resultFormat": "time_series",
@@ -4519,7 +4519,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4539,7 +4539,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "L",
               "resultFormat": "time_series",
@@ -4555,7 +4555,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4575,7 +4575,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "M",
               "resultFormat": "time_series",
@@ -4591,7 +4591,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4611,7 +4611,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "N",
               "resultFormat": "time_series",
@@ -4627,7 +4627,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4647,7 +4647,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "O",
               "resultFormat": "time_series",
@@ -4663,7 +4663,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4683,7 +4683,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "P",
               "resultFormat": "time_series",
@@ -4699,7 +4699,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4719,7 +4719,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "Q",
               "resultFormat": "time_series",
@@ -4735,7 +4735,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4755,7 +4755,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "R",
               "resultFormat": "time_series",
@@ -4771,7 +4771,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4805,7 +4805,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4825,7 +4825,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "T",
               "resultFormat": "time_series",
@@ -4841,7 +4841,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4861,7 +4861,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "U",
               "resultFormat": "time_series",
@@ -4877,7 +4877,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4897,7 +4897,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "V",
               "resultFormat": "time_series",
@@ -4913,7 +4913,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4933,7 +4933,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "W",
               "resultFormat": "time_series",
@@ -4949,7 +4949,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -4969,7 +4969,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "X",
               "resultFormat": "time_series",
@@ -4985,7 +4985,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5005,7 +5005,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "Y",
               "resultFormat": "time_series",
@@ -5021,7 +5021,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5041,7 +5041,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "Z",
               "resultFormat": "time_series",
@@ -5057,7 +5057,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5077,7 +5077,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5092,7 +5092,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5125,7 +5125,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5145,7 +5145,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5160,7 +5160,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5180,7 +5180,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5195,7 +5195,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5215,7 +5215,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5230,7 +5230,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 },
@@ -5256,7 +5256,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5271,7 +5271,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5291,7 +5291,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5306,7 +5306,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5326,7 +5326,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5341,7 +5341,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5361,7 +5361,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bundle-received-messages__hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5376,7 +5376,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5396,7 +5396,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"transmitted-messages__reservation-tear\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE (\"Producer\" =~ /^$Node$/) AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"transmitted-messages__reservation-tear\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "resultFormat": "time_series",
               "select": [
@@ -5411,7 +5411,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5530,7 +5530,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5603,7 +5603,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT \"bandwidth-information__pre-standard-dste-interface__allocated-bit-rate\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT \"bandwidth-information__pre-standard-dste-interface__allocated-bit-rate\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
@@ -5619,7 +5619,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5692,7 +5692,7 @@
               "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief",
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT (\"bandwidth-information__pre-standard-dste-interface__max-flow-bandwidth\" - \"bandwidth-information__pre-standard-dste-interface__allocated-bit-rate\" ) FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief\" WHERE \"Producer\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+              "query": "SELECT (\"bandwidth-information__pre-standard-dste-interface__max-flow-bandwidth\" - \"bandwidth-information__pre-standard-dste-interface__allocated-bit-rate\" ) FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
               "rawQuery": false,
               "refId": "C",
               "resultFormat": "time_series",
@@ -5708,7 +5708,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5799,7 +5799,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5837,7 +5837,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5875,7 +5875,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5913,7 +5913,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5951,7 +5951,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -5989,7 +5989,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6027,7 +6027,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6065,7 +6065,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6103,7 +6103,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6141,7 +6141,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6179,7 +6179,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6217,7 +6217,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6255,7 +6255,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6293,7 +6293,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6331,7 +6331,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6369,7 +6369,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6407,7 +6407,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6445,7 +6445,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6483,7 +6483,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6521,7 +6521,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6559,7 +6559,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6597,7 +6597,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6635,7 +6635,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6673,7 +6673,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6711,7 +6711,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6749,7 +6749,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6786,7 +6786,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6823,7 +6823,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6860,7 +6860,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6897,7 +6897,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6934,7 +6934,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -6971,7 +6971,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -7008,7 +7008,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -7045,7 +7045,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -7082,7 +7082,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -7119,7 +7119,7 @@
               ],
               "tags": [
                 {
-                  "key": "Producer",
+                  "key": "source",
                   "operator": "=~",
                   "value": "/^$Node$/"
                 }
@@ -7143,12 +7143,7 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "isNone": true,
-          "selected": true,
-          "text": "None",
-          "value": ""
-        },
+        "current": {},
         "datasource": "InfluxDB",
         "definition": "",
         "error": null,
@@ -7158,7 +7153,7 @@
         "multi": false,
         "name": "Node",
         "options": [],
-        "query": "SHOW TAG VALUES WITH KEY=\"Producer\"",
+        "query": "SHOW TAG VALUES WITH KEY=\"source\"",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

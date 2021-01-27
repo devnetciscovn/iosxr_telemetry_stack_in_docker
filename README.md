@@ -13,7 +13,7 @@ Download the iosxr_telemetry_stack_in_docker git repo using git clone command
 git clone https://wwwin-github.cisco.com/sargandh/iosxr_telemetry_stack_in_docker.git
 ```
 
-All the docker commands should be used under iosxr_telemetry_stack_in_docker. 
+All the docker commands should be used under iosxr_telemetry_stack_in_docker.
 
 So after git clone command, change working directory to cd iosxr_telemetry_stack_in_docker
 ```
@@ -26,6 +26,12 @@ sudo docker run --rm \
     -e INFLUXDB_HTTP_AUTH_ENABLED=true \
     -e INFLUXDB_ADMIN_USER=admin \
     -e INFLUXDB_ADMIN_PASSWORD=admin \
+    -v iosxrtelemetrystackindocker_influxdb:/var/lib/influxdb \
+    -v $PWD/influxdb/scripts:/docker-entrypoint-initdb.d \
+    influxdb:1.8.3 /init-influxdb.sh
+
+sudo docker run --rm \
+    --env-file config_influxdb.env \
     -v iosxrtelemetrystackindocker_influxdb:/var/lib/influxdb \
     -v $PWD/influxdb/scripts:/docker-entrypoint-initdb.d \
     influxdb:1.8.3 /init-influxdb.sh
@@ -49,7 +55,7 @@ sudo docker-compose down
 ```
 * Stop the docker telemetry stack and remove the influxdb database iosxrtelemetrystackindocker_influxdb  
 
-NOTE: The existing influxdb time series data will be lost. 
+NOTE: The existing influxdb time series data will be lost.
 
 ```
 sudo docker-compose down -v
