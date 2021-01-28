@@ -23,14 +23,6 @@ cd iosxr_telemetry_stack_in_docker
 
 ```
 sudo docker run --rm \
-    -e INFLUXDB_HTTP_AUTH_ENABLED=true \
-    -e INFLUXDB_ADMIN_USER=admin \
-    -e INFLUXDB_ADMIN_PASSWORD=admin \
-    -v iosxrtelemetrystackindocker_influxdb:/var/lib/influxdb \
-    -v $PWD/influxdb/scripts:/docker-entrypoint-initdb.d \
-    influxdb:1.8.3 /init-influxdb.sh
-
-sudo docker run --rm \
     --env-file config_influxdb.env \
     -v iosxrtelemetrystackindocker_influxdb:/var/lib/influxdb \
     -v $PWD/influxdb/scripts:/docker-entrypoint-initdb.d \
