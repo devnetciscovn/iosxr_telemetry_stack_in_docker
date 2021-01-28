@@ -7196,7 +7196,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "IOSXR_Device_Metrics_Telemetry",
+  "title": "old_telemetry_dashboard",
   "uid": "3In6qUMmz",
   "version": 1
 }
