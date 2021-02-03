@@ -1,12 +1,12 @@
 # iosxr_telemetry_stack_in_docker
 IOSXR Telemetry Application Stack in Docker
 
-Often it requires lot of time to configure the telemetry application stack to see the full capabilities of IOS-XR telemetry streaming.  
+Often it requires lot of time to configure the telemetry application stack to see the full capabilities of IOS-XR telemetry streaming.
 The telemetry application stack includes telegraf, influxdb, grafana, pipeline, and more.
 
 The purpose of this project is to preconfigure telemetry application stack (telegraf, influxdb, grafana, et) as docker-compose application along with a number of preconfigured grafana dashboards for router health and network monitoring. 
 
-It all takes a few commands to run whole application stack in docker environment.
+All it takes is a few commands to run whole application stack in docker environment.
 
 The current monitoring dashboards are
    * Health Monitoring dashboard - CPU, memory, interface counters, GigE optical-power, etc
@@ -236,7 +236,10 @@ RP/0/RP0/CPU0:NCS5508-Core1-DUT#
 ```
 ## Sample Telemetry and SNMP collection
 
-SNMP Metrics
+Device Metrics - Telemetry 
+![Alt text](/images/IOSXR_Device_Health_Telemetry.png?raw=true "SNMP metrics collected by telegraf")
+
+Device Metrics - SNMP
 ![Alt text](/images/IOSXR_Device_Metrics_SNMP.png?raw=true "SNMP metrics collected by telegraf")
 
 
