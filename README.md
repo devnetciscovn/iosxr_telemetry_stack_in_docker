@@ -64,13 +64,8 @@ cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ more config_telegraf.env
 #telegraf environment variables
 
 #Device SNMP details
-SNMP_DEVICE_IP=udp://10.1.1.100:161             #Provide your router's management IP reachable from docker VM
-SNMP_COMMUNITY=cisco123				#Provide SNMP version 2 community string
-cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ 
-
-#Example Device SNMP details
-#SNMP_DEVICE_IP=udp://10.1.1.100:161
-#SNMP_COMMUNITY=cisco123
+SNMP_DEVICE_IP=udp://10.1.1.100:161             #Provide router's management IP reachable from docker VM
+SNMP_COMMUNITY=cisco123                         #Provide SNMP version 2 community string
 ```
 
 3. Start the iosxr telemetry stack using docker-compose up command
