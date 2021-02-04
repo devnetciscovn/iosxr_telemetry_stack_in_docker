@@ -64,9 +64,13 @@ cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ more config_telegraf.env
 #telegraf environment variables
 
 #Device SNMP details
-SNMP_DEVICE_IP=udp://<Router_Mgmt_IP>:161 #Provide your router's management IP reachable from docker VM
-SNMP_COMMUNITY=<community>                 #Provide SNMP version 2 community string
+SNMP_DEVICE_IP=udp://10.1.1.100:161             #Provide your router's management IP reachable from docker VM
+SNMP_COMMUNITY=cisco123				#Provide SNMP version 2 community string
 cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ 
+
+#Example Device SNMP details
+#SNMP_DEVICE_IP=udp://10.1.1.100:161
+#SNMP_COMMUNITY=cisco123
 ```
 
 3. Start the iosxr telemetry stack using docker-compose up command
@@ -84,6 +88,13 @@ Creating iosxrtelemetrystackindocker_telegraf_1 ...
 Creating iosxrtelemetrystackindocker_grafana_1
 Creating iosxrtelemetrystackindocker_telegraf_1 ... done
 cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ 
+
+cisco@ubuntu-docker:~$ sudo docker ps
+CONTAINER ID   IMAGE                          COMMAND                  CREATED      STATUS      PORTS                                                    NAMES
+72b135b24d41   telegraf:1.16.3                "/entrypoint.sh tele.."   6 days ago   Up 6 days   8092/udp, 8125/udp, 8094/tcp, 0.0.0.0:57000->57000/tcp   iosxrtelemetrystackindocker_telegraf_1
+5feabd3c2bc7   grafana/grafana:7.3.6-ubuntu   "/run.sh"                 6 days ago   Up 6 days   0.0.0.0:3000->3000/tcp                                   iosxrtelemetrystackindocker_grafana_1
+60125041c6e2   influxdb:1.8.3                 "/entrypoint.sh infl.."   6 days ago   Up 6 days   0.0.0.0:8086->8086/tcp                                   iosxrtelemetrystackindocker_influxdb_1
+cisco@ubuntu-docker:~$ 
 ```
 
 ## Accessing Telemery Stack GUI
