@@ -21,7 +21,7 @@ The current monitoring dashboards are
 
 Download the iosxr_telemetry_stack_in_docker git repo using git clone command
 
-```
+```bash
 git clone https://wwwin-github.cisco.com/sargandh/iosxr_telemetry_stack_in_docker.git
 ```
 
@@ -29,7 +29,7 @@ git clone https://wwwin-github.cisco.com/sargandh/iosxr_telemetry_stack_in_docke
 
 NOTE: All the docker commands should be used under iosxr_telemetry_stack_in_docker.
 
-```
+```bash
 cd iosxr_telemetry_stack_in_docker
 ```
 
@@ -37,14 +37,14 @@ cd iosxr_telemetry_stack_in_docker
 Running time series database such as influxdb without any retention policy can easily fill up the server storage due the vast amount of telemetry data.  
 Default settting is configured for 30 days/720 hours and can be changed on iql script. 
 
-```
+```bsah
 cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ more influxdb/scripts/influxdb-init.iql   
 CREATE DATABASE mdt_db WITH DURATION 720h SHARD DURATION 6h;
 cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ 
 ```
 
 Create influxdb database using the below command
-```
+```bash
 sudo docker run --rm \
     --env-file config_influxdb.env \
     -v iosxrtelemetrystackindocker_influxdb:/var/lib/influxdb \
@@ -53,13 +53,13 @@ sudo docker run --rm \
 ```
 
 Ensure the below output is present on the logs which ensures that iql database creation script is run.
-```
+```bash
 [httpd] 127.0.0.1 - - [26/Jan/2021:09:24:26 +0000] "POST /query?chunked=true&db=&epoch=ns&q=CREATE+USER+%22admin%22+WITH+PASSWORD+%5BREDACTED%5D+WITH+ALL+PRIVILEGES HTTP/1.1" 200 57 "-" "InfluxDBShell/1.8.3" 489f977f-5fb8-11eb-8002-0242ac110002 120126
 /init-influxdb.sh: running /docker-entrypoint-initdb.d/influxdb-init.iql
 
 ```
 2. Configure SNMP credentials if you want to use this app stack as SNMP monitoring dashboard
-```
+```bash
 cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ more config_telegraf.env 
 #telegraf environment variables
 
@@ -70,10 +70,10 @@ SNMP_COMMUNITY=cisco123                         #Provide SNMP version 2 communit
 
 3. Start the iosxr telemetry stack using docker-compose up command
 
-```
+```bash
 sudo docker-compose up -d
 ```
-```
+```bash
 cisco@ubuntu-docker:~/iosxr_telemetry_stack_in_docker$ sudo docker-compose up -d
 Creating network "iosxrtelemetrystackindocker_default" with the default driver
 Creating iosxrtelemetrystackindocker_influxdb_1 ... 
