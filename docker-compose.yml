@@ -1,4 +1,4 @@
-version: "2"
+version: "2.4"
 
 services:
   influxdb:
@@ -25,14 +25,26 @@ services:
     #build: telegraf
     env_file: ./config_telegraf.env
     image: telegraf:1.16.3
+    #image: telegraf:latest
     depends_on:
       - "influxdb"
     ports:
       - "57000:57000"
+      - "6514:6514"
+      #- "162:162/udp"
     volumes:
       - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
       - ./telegraf/snmp/snmp.conf:/etc/snmp/snmp.conf
       - ./telegraf/snmp/mibs:/usr/share/mibs
+
+  syslog-ng:
+    image: balabit/syslog-ng:3.31.2
+    depends_on:
+      - "telegraf"
+    ports:
+      - "514:514/udp"
+    volumes:
+      - ./syslog-ng/syslog-ng.conf:/etc/syslog-ng/syslog-ng.conf
 
 volumes:
   influxdb:
