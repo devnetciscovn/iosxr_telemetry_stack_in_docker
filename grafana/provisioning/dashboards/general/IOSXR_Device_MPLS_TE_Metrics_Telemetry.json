@@ -1,0 +1,2794 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 2,
+  "iteration": 1627915427415,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 12,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Allocated RSVP BW, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bandwidth-information__pre-standard-dste-interface__allocated-bit-rate\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief\" WHERE \"source\" =~ /^$Node$/ AND \"interface-name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface-name\"",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bandwidth_information/pre_standard_dste_interface/allocated_bit_rate"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "RSVP Bandwidth Allocation",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "MAX RSVP BW, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/interface-briefs/interface-brief",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bandwidth_information/pre_standard_dste_interface/max_flow_bandwidth"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "RSVP Maximum Bandwidth ",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbits",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Auto-BW tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"auto-bandwidth-tunnels\" FROM \"Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "auto_bandwidth_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Backup tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "backup_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bandwidth protected tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bw_protected_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "FRR-headend tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "frr_head_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "FRR-midpoint tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "frr_mid_point_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "FRR-protected tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "frr_protected_interfaces"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Link protected tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "G",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "link_protected_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Node protected tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "node_protected_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "P2P headend tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "I",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p2p_head_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Protected headend tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "J",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "protected_head_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Protected midpoint tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "K",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "protected_mid_point_tunnels"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Midpoint tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "L",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p2p_mid_point_s2_ls"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Tail-end tunnels",
+          "dsType": "influxdb",
+          "groupBy": [],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "M",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p2p_tail_s2_ls"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MPLS-TE Tunnels Summary",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Auto-BW tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "auto_bandwidth_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Backup tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "backup_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bandwidth protected tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bw_protected_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "FRR-headend tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "frr_head_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "FRR-midpoint tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "frr_mid_point_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "FRR-protected tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "frr_protected_interfaces"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Link protected tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "G",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "link_protected_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Node protected tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "node_protected_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "P2P headend tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "I",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p2p_head_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Protected headend tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "J",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "protected_head_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Protected midpoint tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "K",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "protected_mid_point_tunnels"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Midpoint tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "L",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p2p_mid_point_s2_ls"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Tail-end tunnels change",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-mpls-te-oper:mpls-te/tunnels/summary",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "M",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p2p_tail_s2_ls"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "difference"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MPLS-TE Tunnel Status Changes",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Bundle RX ACK, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "ack"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle RX HELLO, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_received_messages/hello"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle RX PATH, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_received_messages/path"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle RX PATH ERROR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_received_messages/path_error"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle RX PATH TEAR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_received_messages/path_tear"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle RX RESV, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_received_messages/reservation"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle RX RESV CONFIRM, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "G",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_received_messages/reservation_confirm"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle RX RESV ERROR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_received_messages/reservation_error"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle RX RESV TEAR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "I",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_received_messages/reservation_tear"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX ACK, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "J",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/ack"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX HELLO, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "K",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/hello"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX PATH, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "L",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/path"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX PATH ERROR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "M",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/path_error"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX PATH TEAR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "N",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/path_tear"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX RESV, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "O",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/reservation"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX RESV CONFIRM, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "P",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/reservation_confirm"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX RESV ERROR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "Q",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/reservation_error"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "Bundle TX RESV TEAR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "R",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bundle_transmitted_messages/reservation_tear"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX ACK, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "S",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/ack"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX HELLO, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "T",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/hello"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX PATH, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "U",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/path"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX PATH ERROR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "V",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/path_error"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX PATH TEAR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "W",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/path_tear"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX RESV, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "X",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/reservation"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX RESV CONFIRM, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "Y",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/reservation_confirm"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX RESV ERROR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "Z",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/reservation_error"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "RX RESV TEAR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "received_messages/reservation_tear"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "TX ACK, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/ack"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "TX HELLO, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/hello"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "TX PATH, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/path"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "TX PATH ERROR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/path_error"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            },
+            {
+              "condition": "AND",
+              "key": "interface_name",
+              "operator": "=~",
+              "value": "/Bundle.*/"
+            }
+          ]
+        },
+        {
+          "alias": "TX PATH TEAR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/path_tear"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "TX RESV, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/reservation"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "TX RESV CONFIRM, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/reservation_confirm"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "TX RESV ERROR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"bundle-received-messages/hello\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE \"source\" =~ /^$Node$/ AND \"interface_name\" =~ /Bundle.*/ AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/reservation_error"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        },
+        {
+          "alias": "TX RESV TEAR, [[tag_interface_name]]",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "interface_name"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"transmitted-messages/reservation-tear\" FROM \"Cisco-IOS-XR-ip-rsvp-oper:rsvp/counters/interface-messages/interface-message\" WHERE (\"source\" =~ /^$Node$/) AND $timeFilter GROUP BY \"interface_name\"",
+          "rawQuery": false,
+          "refId": "NA",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "transmitted_messages/reservation_tear"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "source",
+              "operator": "=~",
+              "value": "/^$Node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "RSVP Message Stats",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "ASR9K_SUT",
+          "value": "ASR9K_SUT"
+        },
+        "datasource": "InfluxDB",
+        "definition": "",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "Node",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY=\"source\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "IOSXR_Device_MPLS_TE_Metrics_Telemetry",
+  "uid": "fGCfG_ink",
+  "version": 2
+}
