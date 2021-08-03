@@ -2,11 +2,10 @@
 IOSXR Telemetry Application Stack in Docker
 
 Minimal Telemetry opensource application landscape.
-![](https://github.com/vosipchu/XR_TCS/blob/master/docs/topology.png?raw=true)
+![Alt text](/images/Telemetry_diagram.PNG?raw=true)
 
 The Collection Stack has several major components:
 
-- [Pipeline](https://github.com/cisco/bigmuddy-network-telemetry-pipeline) – a tool responsible for the termination of Telemetry streams and conversion to several different formats, acceptable by next layers.
 - [Telegraf](https://www.influxdata.com/time-series-platform/telegraf) – is a part of InfluxData portfolio and is an agent responsible for polling different metrics (SNMP for our goals). It will also monitor utilization of the server resources.
 - [Prometheus](https://prometheus.io) – a popular Time Series Databases or [TSDB](https://en.wikipedia.org/wiki/Time_series_database). The role of the database will be to monitor Pipeline and its resources.
 - [InfluxDB](https://www.influxdata.com/time-series-platform/influxdb) – is a TSDB that will be used as the main data store for all your Telemetry and SNMP counters.
